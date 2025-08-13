@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@template/tsconfig/base.json",
+  "compilerOptions": {
+    "composite": true,
+    "sourceMap": true,
+    "incremental": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "target": "ES2017",
+    "module": "CommonJS",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src", "test"]
+}

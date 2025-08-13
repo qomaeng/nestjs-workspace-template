@@ -1,0 +1,37 @@
+{
+  "name": "@template/workspace",
+  "version": "0.0.1",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r build",
+    "format": "pnpm -r format",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "clean": "pnpm -r clean",
+    "packages": "pnpm --filter \"{packages/*}\"",
+    "api-server": "dotenvx run -f ./envs/api-server/.env -- pnpm --filter \"{apps/api-server}\"",
+    "auth-service": "dotenvx run -f ./envs/auth-service/.env -- pnpm --filter \"{apps/auth-service}\"",
+    "user-service": "dotenvx run -f ./envs/user-service/.env -- pnpm --filter \"{apps/user-service}\""
+  },
+  "devDependencies": {
+    "@dotenvx/dotenvx": "^1.48.4",
+    "@template/eslint": "workspace:*",
+    "@template/tsconfig": "workspace:*",
+    "eslint": "^9.33.0",
+    "prettier": "^3.6.2",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.39.1"
+  },
+  "engines": {
+    "node": "^22",
+    "pnpm": "^10"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@nestjs/core",
+      "argon2"
+    ]
+  }
+}

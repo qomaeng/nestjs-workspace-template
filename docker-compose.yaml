@@ -1,0 +1,123 @@
+services:
+  ##################
+  #       API
+  ##################
+
+  api-server:
+    container_name: template-api-server
+    restart: always
+    build:
+      context: .
+      dockerfile: ./apps/api-server/Dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      - template
+    volumes:
+      - ./volumes/api-server/logs:/app/logs
+    env_file:
+      - path: ./envs/api-server/.env
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=postgres
+      - REDIS_HOST=redis
+      - AUTH_RPC_HOST=auth-service
+      - USER_RPC_HOST=user-service
+    depends_on:
+      - postgres
+      - redis
+      - user-service
+      - auth-service
+
+  ##################
+  #     Service
+  ##################
+
+  user-service:
+    container_name: template-user-service
+    restart: always
+    build:
+      context: .
+      dockerfile: ./apps/user-service/Dockerfile
+    networks:
+      - template
+    volumes:
+      - ./volumes/user-service/logs:/app/logs
+    env_file:
+      - path: ./envs/user-service/.env
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=postgres
+      - REDIS_HOST=redis
+    depends_on:
+      - postgres
+      - redis
+
+  auth-service:
+    container_name: template-auth-service
+    restart: always
+    build:
+      context: .
+      dockerfile: ./apps/auth-service/Dockerfile
+    networks:
+      - template
+    volumes:
+      - ./volumes/auth-service/logs:/app/logs
+    env_file:
+      - path: ./envs/auth-service/.env
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=postgres
+      - REDIS_HOST=redis
+      - USER_RPC_HOST=user-service
+    depends_on:
+      - postgres
+      - redis
+      - user-service
+
+  ##################
+  #     Storage
+  ##################
+
+  postgres:
+    container_name: template-postgres
+    image: postgres:17.5-alpine3.22
+    restart: always
+    ports:
+      - 5432:5432
+    networks:
+      - template
+    volumes:
+      - template-postgres:/var/lib/postgresql/data
+      - ./volumes/postgres/entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
+      - ./volumes/postgres/config/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+      - ./volumes/postgres/config/pg_hba.conf:/etc/postgresql/pg_hba.conf:ro
+    env_file:
+      - path: ./envs/postgres/.env
+    command: -c config_file=/etc/postgresql/postgresql.conf
+
+  redis:
+    container_name: template-redis
+    image: redis:8.2.0-alpine3.22
+    restart: always
+    ports:
+      - 6379:6379
+    networks:
+      - template
+    env_file:
+      - path: ./envs/redis/.env
+    command:
+      - /bin/sh
+      - -c
+      - redis-server --requirepass "$${REDIS_PASSWORD}"
+
+##################
+#      Host
+##################
+
+networks:
+  template:
+
+volumes:
+  template-postgres:
+    name: template-postgres

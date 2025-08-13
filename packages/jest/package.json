@@ -1,0 +1,14 @@
+{
+  "name": "@template/jest",
+  "version": "0.0.1",
+  "description": "",
+  "private": true,
+  "files": [
+    "base.mjs",
+    "nest.mjs"
+  ],
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "jest": "^30.0.5"
+  }
+}
