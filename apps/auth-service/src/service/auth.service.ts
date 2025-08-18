@@ -112,7 +112,7 @@ export class AuthService implements IAuthService {
     // 새로운 Bearer 토큰 생성하기
     const tokens = await this.generateBearerTokens(authUser);
 
-    this.logger.log(`Bearer token was refreshed: id=${authUser.userId}`);
+    this.logger.log(`Bearer token was refreshed: userId=${authUser.userId}`);
 
     return {
       accessToken: tokens.accessToken,
@@ -172,7 +172,7 @@ export class AuthService implements IAuthService {
     const newPasswordHash = await this.hashPassword(payload.newPassword);
     await this.userService.updateUser({ id: user.id, passwordHash: newPasswordHash });
 
-    this.logger.log(`Changed user's password id=${user.id}`);
+    this.logger.log(`Changed user's password: id=${user.id}`);
   }
 
   ///////////////////////////////////

@@ -81,7 +81,7 @@ export class AuthMiddleware implements NestMiddleware {
       (value) => value.toLowerCase() === scheme.toLowerCase(),
     );
     if (!nomalizedScheme) {
-      throw new AuthenticationError(`Unsupported auth schema: ${scheme}`);
+      throw new AuthenticationError(`Unsupported auth scheme: ${scheme}`);
     }
     switch (nomalizedScheme) {
       case 'Bearer': {
@@ -91,7 +91,7 @@ export class AuthMiddleware implements NestMiddleware {
         } satisfies BearerCredential;
       }
       default: {
-        throw new AuthenticationError(`Unsupported auth schema: ${scheme}`);
+        throw new AuthenticationError(`Unsupported auth scheme: ${scheme}`);
       }
     }
   }
