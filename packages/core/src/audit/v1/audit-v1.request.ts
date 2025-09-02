@@ -4,7 +4,7 @@ import {
   FindAuditByIdPayload,
   FindAuditOptions,
   QueryAuditsPayload,
-} from '../audit.payload';
+} from '../audit.payload.js';
 
 ///////////////////////////////////
 //              Find

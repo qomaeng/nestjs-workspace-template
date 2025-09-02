@@ -1,13 +1,13 @@
 import { util } from 'zod/v4/core';
 
-import type { User } from '@/user';
+import type { User } from '@/user/index.js';
 
 import type {
   RefreshV1Response,
   SignInV1Response,
   SignUpV1Response,
-} from './auth-v1.response';
-import type { AuthUser } from '../auth.model';
+} from './auth-v1.response.js';
+import type { AuthUser } from '../auth.model.js';
 
 describe('core.auth.v1.response build:spec', () => {
   describe('type inference', () => {

@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
-import { User } from '@/user';
+import { User } from '@/user/index.js';
 
-import { AuthUser, BearerCredential } from '../auth.model';
+import { AuthUser, BearerCredential } from '../auth.model.js';
 
 export type SignUpV1Response = z.infer<typeof SignUpV1Response>;
 export const SignUpV1Response = z.object({

@@ -1,6 +1,6 @@
 import { util } from 'zod/v4/core';
 
-import type { UserRole } from './user.model';
+import type { UserRole } from './user.model.js';
 import type {
   CreateUserPayload,
   DeleteUserPayload,
@@ -10,7 +10,7 @@ import type {
   FindUserPayload,
   QueryUsersPayload,
   UpdateUserPayload,
-} from './user.payload';
+} from './user.payload.js';
 
 describe('core.user.payload build:spec', () => {
   describe('type inference', () => {

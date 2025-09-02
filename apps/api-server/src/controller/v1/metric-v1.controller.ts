@@ -2,7 +2,7 @@ import { Controller, Get, Header } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Metrics')
-@Controller('metrics/v1')
+@Controller('v1/metrics')
 export class MetricV1Controller {
   constructor() {
     // do nothing

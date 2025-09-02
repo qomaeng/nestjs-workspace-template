@@ -1,2 +1,2 @@
-# NestJS Workspace Template
+# Typescript Workspace Template
 

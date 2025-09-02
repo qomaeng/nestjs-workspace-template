@@ -5,32 +5,32 @@ import { Inject, Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JsonWebTokenError, JwtService, TokenExpiredError } from '@nestjs/jwt';
 import {
-  AuthUser,
+  type AuthUser,
+  type IAuthService,
+  type IUserService,
+  type User,
   BasicCredential,
   BearerCredential,
   ChangePasswordPayload,
   ExpiredCredentialError,
-  IAuthService,
   InvalidCredentialError,
-  IUserService,
   RefreshPayload,
   SignInPayload,
   SignUpPayload,
   UnknownError,
   UnsupportedError,
-  User,
   VerifyCredentialPayload,
 } from '@template/core';
 import * as argon2 from 'argon2';
-import { Cache } from 'cache-manager';
+import type { Cache } from 'cache-manager';
 import ms from 'ms';
 import { v4 as uuidv4 } from 'uuid';
 
-import { AppConfig } from '@/app.config';
+import type { AppConfig } from '@/app.config';
 
 @Injectable()
 export class AuthService implements IAuthService {
-  private readonly logger = new Logger(AuthService.name);
+  private readonly logger = new Logger(this.constructor.name);
 
   constructor(
     @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,

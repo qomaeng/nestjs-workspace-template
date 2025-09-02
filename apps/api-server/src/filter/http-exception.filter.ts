@@ -11,23 +11,23 @@ import {
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
+  type ErrorResponse,
   AuthenticationError,
   BaseError,
   CommonErrorCode,
-  ErrorResponse,
   HttpUtil,
   InvalidArgumentsError,
   UnauthorizedError,
   UnknownError,
 } from '@template/core';
-import { FastifyReply, FastifyRequest } from 'fastify';
+import type { FastifyReply, FastifyRequest } from 'fastify';
 import { ZodError } from 'zod';
 
 import type { AppConfig } from '../app.config';
 
 @Catch()
 export class HttpExceptionFilter implements ExceptionFilter, OnModuleInit {
-  private readonly logger = new Logger(HttpExceptionFilter.name);
+  private readonly logger = new Logger(this.constructor.name);
 
   private printErrorStack: boolean = false;
   private ignoreUrls: RegExp[] = [];

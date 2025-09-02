@@ -2,20 +2,20 @@ import { isIPv4, isIPv6 } from 'node:net';
 
 import { type NestMiddleware, Inject, Injectable, Logger } from '@nestjs/common';
 import {
-  AuthContext,
+  type AuthContext,
+  type AuthUser,
+  type BearerCredential,
+  type Credential,
+  type IAuthService,
   AuthenticationError,
-  AuthUser,
-  BearerCredential,
-  Credential,
   HttpUtil,
-  IAuthService,
   UnknownError,
 } from '@template/core';
-import { FastifyReply, FastifyRequest } from 'fastify';
+import type { FastifyReply, FastifyRequest } from 'fastify';
 
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
-  private readonly logger = new Logger(AuthMiddleware.name);
+  private readonly logger = new Logger(this.constructor.name);
 
   constructor(@Inject('AuthService') private readonly authService: IAuthService) {
     // do nothing

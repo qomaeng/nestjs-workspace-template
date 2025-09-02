@@ -1,6 +1,6 @@
 import { Controller, Inject } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
-import { IUserService } from '@template/core';
+import type { IUserService } from '@template/core';
 
 @Controller()
 export class UserRpcController {

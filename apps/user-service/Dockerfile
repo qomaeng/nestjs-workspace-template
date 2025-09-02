@@ -6,22 +6,21 @@ FROM node:22.18.0-alpine3.22 AS builder
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
-RUN corepack use pnpm@10.14.0
 
 COPY . /usr/src/app
 WORKDIR /usr/src/app
 
 # Install dependencies
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
-  pnpm \
+  pnpm                           \
   --filter '@template/workspace' \
-  --filter '{packages/*}'    \
+  --filter '{packages/*}'        \
   --filter '{apps/user-service}' \
   install --frozen-lockfile
 
 # Build packages & application
-RUN pnpm \
-  --filter '{packages/*}'    \
+RUN pnpm                         \
+  --filter '{packages/*}'        \
   --filter '{apps/user-service}' \
   build
 

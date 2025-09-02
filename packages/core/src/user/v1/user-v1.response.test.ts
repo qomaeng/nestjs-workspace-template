@@ -1,11 +1,11 @@
 import { util } from 'zod/v4/core';
 
-import type { User } from '../user.model';
+import type { User } from '../user.model.js';
 import type {
   CreateUserV1Response,
   FindUserV1Response,
   QueryUsersV1Response,
-} from './user-v1.response';
+} from './user-v1.response.js';
 
 describe('core.user.v1.response build:spec', () => {
   describe('type inference', () => {

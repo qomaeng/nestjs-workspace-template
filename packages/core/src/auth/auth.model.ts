@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { User, UserConstant } from '@/user';
+import { User, UserConstant } from '@/user/index.js';
 
 export type BasicCredential = z.infer<typeof BasicCredential>;
 export const BasicCredential = z.object({

@@ -6,12 +6,12 @@ import {
   Logger,
 } from '@nestjs/common';
 import { HttpUtil } from '@template/core';
-import { FastifyRequest } from 'fastify';
+import type { FastifyRequest } from 'fastify';
 import { type Observable, tap } from 'rxjs';
 
 @Injectable()
 export class HttpRequestInterceptor implements NestInterceptor {
-  private readonly logger = new Logger(HttpRequestInterceptor.name);
+  private readonly logger = new Logger(this.constructor.name);
 
   intercept(
     context: ExecutionContext,

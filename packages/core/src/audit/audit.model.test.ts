@@ -1,8 +1,8 @@
 import { util } from 'zod/v4/core';
 
-import type { User } from '@/user';
+import type { User } from '@/user/index.js';
 
-import type { Audit } from './audit.model';
+import type { Audit } from './audit.model.js';
 
 describe('core.audit.model build:spec', () => {
   describe('type inference', () => {

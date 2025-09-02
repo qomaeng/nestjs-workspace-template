@@ -1,6 +1,6 @@
-import { type BaseErrorOptions, BaseError } from '@/error/base.error';
+import { type BaseErrorOptions, BaseError } from '@/error/base.error.js';
 
-import { AuditErrorCode } from './audit.constant';
+import { AuditErrorCode } from './audit.constant.js';
 
 export abstract class AuditError extends BaseError {}
 

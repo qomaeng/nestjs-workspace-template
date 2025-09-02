@@ -1,11 +1,11 @@
-import type { Audit } from './audit.model';
+import type { Audit } from './audit.model.js';
 import type {
   FindAuditOptions,
   FindAuditPayload,
   QueryAuditsPayload,
   RegisterAuditPayload,
   UpdateAuditPayload,
-} from './audit.payload';
+} from './audit.payload.js';
 
 export interface IAuditService {
   ///////////////////////////////////

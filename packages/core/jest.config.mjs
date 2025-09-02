@@ -1,22 +1,25 @@
-import baseConfig from '@template/jest/base.mjs';
-
 /** @type {import('jest').Config} */
 export default {
-  ...baseConfig,
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+
+  moduleFileExtensions: ['js', 'json', 'ts'],
   rootDir: 'src',
-  testRegex: '.*\\.(spec|test)\\.ts$',
+  testRegex: '.*\\.(test|spec)\\.ts$',
   transform: {
     '^.+\\.m?[tj]s$': [
       'ts-jest',
       {
         tsconfig: {
-          // To detect type error of zod // FIXME: Find better solution
+          module: 'ESNext',
+          moduleResolution: 'Node',
           isolatedModules: false,
-        }
-      }
+        },
+      },
     ],
   },
-  collectCoverageFrom: ['**/*.[tj]s'],
-  coverageDirectory: '../coverage',
-  testEnvironment: 'node',
+
+  collectCoverageFrom: ['src/**/*.(j|t)s', '!src/**/*.(test|spec).(j|t)s'],
+  coverageDirectory: 'coverage',
+  coverageProvider: 'v8',
 };

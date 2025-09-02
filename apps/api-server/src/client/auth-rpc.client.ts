@@ -14,7 +14,7 @@ import { firstValueFrom, take, timeout } from 'rxjs';
 
 @Injectable()
 export class AuthRpcClient implements IAuthService {
-  private readonly logger = new Logger(AuthRpcClient.name);
+  private readonly logger = new Logger(this.constructor.name);
 
   constructor(@Inject('AuthRpcProxy') private readonly clientProxy: ClientProxy) {
     // do nothing

@@ -1,2 +1,2 @@
-export * from './auth-v1.request';
-export * from './auth-v1.response';
+export * from './auth-v1.request.js';
+export * from './auth-v1.response.js';

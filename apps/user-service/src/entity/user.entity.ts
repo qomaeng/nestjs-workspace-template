@@ -1,4 +1,4 @@
-import { User, UserConstant, UserRole } from '@template/core';
+import { type User, UserConstant, UserRole } from '@template/core';
 import {
   Column,
   CreateDateColumn,

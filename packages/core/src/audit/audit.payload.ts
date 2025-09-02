@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { Audit } from './audit.model';
+import { Audit } from './audit.model.js';
 
 ///////////////////////////////////
 //             Create

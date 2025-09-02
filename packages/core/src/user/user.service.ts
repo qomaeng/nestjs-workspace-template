@@ -1,4 +1,4 @@
-import type { User } from './user.model';
+import type { User } from './user.model.js';
 import type {
   CreateUserPayload,
   DeleteUserPayload,
@@ -6,7 +6,7 @@ import type {
   FindUserPayload,
   QueryUsersPayload,
   UpdateUserPayload,
-} from './user.payload';
+} from './user.payload.js';
 
 export interface IUserService {
   ///////////////////////////////////

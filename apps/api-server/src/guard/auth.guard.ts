@@ -1,8 +1,8 @@
 import { type CanActivate, type ExecutionContext, Injectable } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import {
+  type AuthContext,
   type UserRole,
-  AuthContext,
   AuthenticationError,
   UnauthorizedError,
 } from '@template/core';

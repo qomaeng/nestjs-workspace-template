@@ -1,2 +1,2 @@
-export * from './audit-v1.request';
-export * from './audit-v1.response';
+export * from './audit-v1.request.js';
+export * from './audit-v1.response.js';

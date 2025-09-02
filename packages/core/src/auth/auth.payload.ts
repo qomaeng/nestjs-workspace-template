@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
-import { CreateUserPayload } from '@/user';
+import { CreateUserPayload } from '@/user/index.js';
 
-import { Credential, BasicCredential, BearerCredential } from './auth.model';
+import { Credential, BasicCredential, BearerCredential } from './auth.model.js';
 
 export type SignUpPayload = z.infer<typeof SignUpPayload>;
 export const SignUpPayload = z.object({

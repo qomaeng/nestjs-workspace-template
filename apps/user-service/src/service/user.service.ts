@@ -1,14 +1,14 @@
 import { Injectable, Logger } from '@nestjs/common';
 import {
+  type IUserService,
+  type User,
   CreateUserPayload,
   DeleteUserPayload,
   FindUserOptions,
   FindUserPayload,
-  IUserService,
   NotFoundUserError,
   QueryUsersPayload,
   UpdateUserPayload,
-  User,
 } from '@template/core';
 
 import { UserEntity } from '@/entity/user.entity';
@@ -16,7 +16,7 @@ import { UserRepository } from '@/repostiroy/user.repository';
 
 @Injectable()
 export class UserService implements IUserService {
-  private readonly logger = new Logger(UserService.name);
+  private readonly logger = new Logger(this.constructor.name);
 
   constructor(private readonly userRepository: UserRepository) {
     // do nothing

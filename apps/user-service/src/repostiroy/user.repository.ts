@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import {
   type CreateUserPayload,
+  type DeleteUserPayload,
   type FindUserPayload,
   type FindUserOptions,
   type QueryUsersPayload,
@@ -9,9 +10,16 @@ import {
   PostgresUtil,
   DuplicatedUserError,
   NotFoundUserError,
-  DeleteUserPayload,
 } from '@template/core';
-import { Repository, In, IsNull, ILike, And, MoreThanOrEqual, LessThan } from 'typeorm';
+import {
+  type Repository,
+  In,
+  IsNull,
+  ILike,
+  And,
+  MoreThanOrEqual,
+  LessThan,
+} from 'typeorm';
 
 import { UserEntity } from '@/entity/user.entity';
 

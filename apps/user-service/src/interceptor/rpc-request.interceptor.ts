@@ -9,7 +9,7 @@ import { type Observable, tap } from 'rxjs';
 
 @Injectable()
 export class RpcRequestInterceptor implements NestInterceptor {
-  private readonly logger = new Logger(RpcRequestInterceptor.name);
+  private readonly logger = new Logger(this.constructor.name);
 
   intercept(
     context: ExecutionContext,

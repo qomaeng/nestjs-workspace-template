@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
-import { User } from '@/user';
+import { User } from '@/user/index.js';
 
-import { AuditConstant } from './audit.constant';
+import { AuditConstant } from './audit.constant.js';
 
 export type Audit = z.infer<typeof Audit>;
 export const Audit = z.object({

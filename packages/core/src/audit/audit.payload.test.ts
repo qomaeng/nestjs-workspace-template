@@ -7,7 +7,7 @@ import type {
   QueryAuditsPayload,
   RegisterAuditPayload,
   UpdateAuditPayload,
-} from './audit.payload';
+} from './audit.payload.js';
 
 describe('core.audit.payload build:spec', () => {
   describe('type inference', () => {

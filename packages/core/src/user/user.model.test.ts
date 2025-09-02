@@ -1,6 +1,6 @@
 import { util } from 'zod/v4/core';
 
-import type { UserRole, User } from './user.model';
+import type { UserRole, User } from './user.model.js';
 
 describe('core.user.model build:spec', () => {
   describe('type inference', () => {

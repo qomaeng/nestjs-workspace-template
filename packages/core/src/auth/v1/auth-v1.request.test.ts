@@ -5,7 +5,7 @@ import type {
   RefreshV1Request,
   SignInV1Request,
   SignUpV1Request,
-} from './auth-v1.request';
+} from './auth-v1.request.js';
 
 describe('core.auth.v1.request build:spec', () => {
   describe('type inference', () => {

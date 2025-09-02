@@ -15,7 +15,7 @@ import { firstValueFrom, take, timeout } from 'rxjs';
 
 @Injectable()
 export class UserRpcClient implements IUserService {
-  private readonly logger = new Logger(UserRpcClient.name);
+  private readonly logger = new Logger(this.constructor.name);
 
   constructor(@Inject('UserRpcProxy') private readonly clientProxy: ClientProxy) {
     // do nothing

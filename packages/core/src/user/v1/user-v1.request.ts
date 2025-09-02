@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { UserConstant } from '../user.constant';
+import { UserConstant } from '../user.constant.js';
 import {
   CreateUserPayload,
   DeleteUserPayload,
@@ -8,7 +8,7 @@ import {
   FindUserOptions,
   QueryUsersPayload,
   UpdateUserPayload,
-} from '../user.payload';
+} from '../user.payload.js';
 
 ///////////////////////////////////
 //             Create

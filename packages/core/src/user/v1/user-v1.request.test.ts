@@ -7,8 +7,8 @@ import type {
   FindUserV1RequestOptions,
   QueryUsersV1Request,
   UpdateUserV1Request,
-} from './user-v1.request';
-import type { UserRole } from '../user.model';
+} from './user-v1.request.js';
+import type { UserRole } from '../user.model.js';
 
 describe('core.user.v1.request build:spec', () => {
   describe('type inference', () => {

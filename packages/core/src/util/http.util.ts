@@ -42,7 +42,7 @@ export namespace HttpUtil {
   }
 
   function parseHeader(header: string): string[] {
-    const result = [];
+    const result: string[] = [];
 
     let end = header.length;
     let start = end;

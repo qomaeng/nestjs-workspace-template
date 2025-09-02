@@ -5,7 +5,7 @@ import {
   RefreshPayload,
   SignInPayload,
   SignUpPayload,
-} from '../auth.payload';
+} from '../auth.payload.js';
 
 export type SignUpV1Request = z.infer<typeof SignUpV1Request>;
 export const SignUpV1Request = z.object({

@@ -1,13 +1,13 @@
 import { util } from 'zod/v4/core';
 
-import type { Credential } from './auth.model';
+import type { Credential } from './auth.model.js';
 import type {
   ChangePasswordPayload,
   RefreshPayload,
   SignInPayload,
   SignUpPayload,
   VerifyCredentialPayload,
-} from './auth.payload';
+} from './auth.payload.js';
 
 describe('core.auth.payload build:spec', () => {
   describe('type inference', () => {

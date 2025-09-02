@@ -1,20 +1,20 @@
 import { Body, Controller, HttpCode, HttpStatus, Inject, Post } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import {
-  AuthContext,
+  type AuthContext,
+  type IAuthService,
+  type RefreshV1Response,
+  type SignInV1Response,
   ChangePasswordV1Request,
-  IAuthService,
   RefreshV1Request,
-  RefreshV1Response,
   SignInV1Request,
-  SignInV1Response,
   UnauthorizedError,
 } from '@template/core';
 
 import { ParseAuthContext, UseAuthGuard } from '@/decorator/auth.decorator';
 
 @ApiTags('Auth')
-@Controller('auth/v1')
+@Controller('v1/auth')
 export class AuthV1Controller {
   constructor(@Inject('AuthService') private readonly authService: IAuthService) {
     // do nothing

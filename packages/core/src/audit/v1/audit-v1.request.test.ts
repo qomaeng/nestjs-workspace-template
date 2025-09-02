@@ -4,7 +4,7 @@ import type {
   FindAuditByIdV1Request,
   FindAuditV1RequestOptions,
   QueryAuditsV1Request,
-} from './audit-v1.request';
+} from './audit-v1.request.js';
 
 describe('core.audit.v1.request build:spec', () => {
   describe('type inference', () => {

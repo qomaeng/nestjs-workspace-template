@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { UserConstant } from './user.constant';
+import { UserConstant } from './user.constant.js';
 
 export type UserRole = z.infer<typeof UserRole>;
 export const UserRole = z.enum(['Master', 'Admin', 'User']);

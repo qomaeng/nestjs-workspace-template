@@ -1,6 +1,6 @@
-import { type BaseErrorOptions, BaseError } from '@/error/base.error';
+import { type BaseErrorOptions, BaseError } from '@/error/base.error.js';
 
-import { AuthErrorCode } from './auth.constant';
+import { AuthErrorCode } from './auth.constant.js';
 
 export abstract class AuthError extends BaseError {}
 

@@ -1,6 +1,6 @@
 import { Controller, Inject } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
-import { IAuthService } from '@template/core';
+import type { IAuthService } from '@template/core';
 
 @Controller()
 export class AuthRpcController {

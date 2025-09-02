@@ -4,7 +4,6 @@ services:
   ##################
 
   api-server:
-    container_name: template-api-server
     restart: always
     build:
       context: .
@@ -34,7 +33,6 @@ services:
   ##################
 
   user-service:
-    container_name: template-user-service
     restart: always
     build:
       context: .
@@ -54,7 +52,6 @@ services:
       - redis
 
   auth-service:
-    container_name: template-auth-service
     restart: always
     build:
       context: .
@@ -80,7 +77,6 @@ services:
   ##################
 
   postgres:
-    container_name: template-postgres
     image: postgres:17.5-alpine3.22
     restart: always
     ports:
@@ -97,7 +93,6 @@ services:
     command: -c config_file=/etc/postgresql/postgresql.conf
 
   redis:
-    container_name: template-redis
     image: redis:8.2.0-alpine3.22
     restart: always
     ports:

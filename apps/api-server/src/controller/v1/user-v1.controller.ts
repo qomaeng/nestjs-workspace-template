@@ -12,27 +12,27 @@ import {
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import {
-  AuthContext,
+  type AuthContext,
+  type CreateUserV1Response,
+  type FindUserV1Response,
+  type IAuthService,
+  type IUserService,
+  type QueryUsersV1Response,
   CreateUserV1Request,
-  CreateUserV1Response,
   DeleteUserV1Request,
   FindUserByIdV1Request,
   FindUserV1RequestOptions,
-  FindUserV1Response,
-  IAuthService,
   InvalidArgumentsError,
-  IUserService,
   QueryUsersV1Request,
-  QueryUsersV1Response,
   UnauthorizedError,
   UpdateUserV1Request,
 } from '@template/core';
-import { z } from 'zod';
+import type { z } from 'zod';
 
 import { ParseAuthContext, UseAuthGuard } from '@/decorator/auth.decorator';
 
 @ApiTags('User')
-@Controller('users/v1')
+@Controller('v1/users')
 export class UserV1Controller {
   constructor(
     @Inject('UserService') private readonly userService: IUserService,

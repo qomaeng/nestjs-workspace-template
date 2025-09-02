@@ -1,13 +1,13 @@
 import { util } from 'zod/v4/core';
 
-import type { UserRole } from '@/user';
+import type { UserRole } from '@/user/index.js';
 
 import type {
   AuthUser,
   BasicCredential,
   BearerCredential,
   Credential,
-} from './auth.model';
+} from './auth.model.js';
 
 describe('core.auth.model build:spec', () => {
   describe('type inference', () => {
