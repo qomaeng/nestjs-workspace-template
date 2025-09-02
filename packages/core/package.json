@@ -28,7 +28,7 @@
     "clean": "pnpm clean:build && pnpm clean:test",
     "clean:build": "rimraf ./dist ./tsconfig*.tsbuildinfo",
     "clean:test": "jest --clearCache && rimraf ./coverage",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"{src,test}/**/*.ts\""
   },
   "dependencies": {
