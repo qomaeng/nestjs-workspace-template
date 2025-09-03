@@ -28,7 +28,7 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-'
   \c template1
 
   -- Revoke privileges (PUBLIC -> template1)
-  REVOKE ALL ON DATABASE template1 FROM public;
+  REVOKE ALL ON DATABASE template1 FROM PUBLIC;
 
   -- Revoke privileges (PUBLIC -> public)
   REVOKE CREATE ON                  SCHEMA public FROM PUBLIC;
