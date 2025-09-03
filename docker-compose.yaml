@@ -11,7 +11,7 @@ services:
     ports:
       - 3000:3000
     networks:
-      - template
+      - internal
     volumes:
       - ./volumes/api-server/logs:/app/logs
     env_file:
@@ -38,7 +38,7 @@ services:
       context: .
       dockerfile: ./apps/user-service/Dockerfile
     networks:
-      - template
+      - internal
     volumes:
       - ./volumes/user-service/logs:/app/logs
     env_file:
@@ -57,7 +57,7 @@ services:
       context: .
       dockerfile: ./apps/auth-service/Dockerfile
     networks:
-      - template
+      - internal
     volumes:
       - ./volumes/auth-service/logs:/app/logs
     env_file:
@@ -80,11 +80,11 @@ services:
     image: postgres:17.5-alpine3.22
     restart: always
     ports:
-      - 5432:5432
+      - 127.0.0.1:5432:5432
     networks:
-      - template
+      - internal
     volumes:
-      - template-postgres:/var/lib/postgresql/data
+      - postgres:/var/lib/postgresql/data
       - ./volumes/postgres/entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
       - ./volumes/postgres/config/postgresql.conf:/etc/postgresql/postgresql.conf:ro
       - ./volumes/postgres/config/pg_hba.conf:/etc/postgresql/pg_hba.conf:ro
@@ -96,9 +96,9 @@ services:
     image: redis:8.2.0-alpine3.22
     restart: always
     ports:
-      - 6379:6379
+      - 127.0.0.1:6379:6379
     networks:
-      - template
+      - internal
     env_file:
       - path: ./envs/redis/.env
     command:
@@ -111,8 +111,7 @@ services:
 ##################
 
 networks:
-  template:
+  internal:
 
 volumes:
-  template-postgres:
-    name: template-postgres
+  postgres:
