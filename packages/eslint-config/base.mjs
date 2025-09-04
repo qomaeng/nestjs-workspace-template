@@ -97,12 +97,10 @@ const importRules = {
     'error',
     {
       'newlines-between': 'always',
-      groups: ['builtin', 'external', 'internal', ['parent', 'sibling', 'index']],
+      groups: ['builtin', 'external', 'internal', ['parent', 'sibling', 'index'], 'object'],
       pathGroups: [
-        {
-          pattern: '@/**',
-          group: 'internal',
-        },
+        { pattern: '@/**', group: 'internal' },
+        { pattern: '~/**', group: 'internal' },
       ],
       alphabetize: {
         order: 'asc',
