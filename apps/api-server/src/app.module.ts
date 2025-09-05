@@ -92,6 +92,7 @@ export class AppModule implements NestModule {
     consumer
       .apply(AuthMiddleware)
       .exclude(
+        { path: '*path', method: RequestMethod.OPTIONS },
         { path: '/docs', method: RequestMethod.GET },
         { path: '/docs/*path', method: RequestMethod.GET },
         { path: '/metrics/v1/health', method: RequestMethod.GET },
