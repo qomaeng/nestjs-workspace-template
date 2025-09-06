@@ -13,7 +13,7 @@ services:
     networks:
       - internal
     volumes:
-      - ./volumes/api-server/logs:/app/logs
+      - api-server-log:/app/logs
     env_file:
       - path: ./envs/api-server/.env
     environment:
@@ -40,7 +40,7 @@ services:
     networks:
       - internal
     volumes:
-      - ./volumes/user-service/logs:/app/logs
+      - user-service-log:/app/logs
     env_file:
       - path: ./envs/user-service/.env
     environment:
@@ -59,7 +59,7 @@ services:
     networks:
       - internal
     volumes:
-      - ./volumes/auth-service/logs:/app/logs
+      - auth-service-log:/app/logs
     env_file:
       - path: ./envs/auth-service/.env
     environment:
@@ -84,7 +84,7 @@ services:
     networks:
       - internal
     volumes:
-      - postgres:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
       - ./volumes/postgres/entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
       - ./volumes/postgres/config/postgresql.conf:/etc/postgresql/postgresql.conf:ro
       - ./volumes/postgres/config/pg_hba.conf:/etc/postgresql/pg_hba.conf:ro
@@ -114,4 +114,7 @@ networks:
   internal:
 
 volumes:
-  postgres:
+  api-server-log:
+  user-service-log:
+  auth-service-log:
+  postgres-data:
