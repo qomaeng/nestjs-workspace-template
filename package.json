@@ -25,7 +25,7 @@
     "pnpm": "^10",
     "node": ">=20"
   },
-  "packageManager": "pnpm@10.15.0",
+  "packageManager": "pnpm@10.15.1",
   "pnpm": {
     "onlyBuiltDependencies": [
       "@nestjs/core",
