@@ -23,10 +23,6 @@ FROM deps AS builder
 
 WORKDIR /usr/src/workspace
 
-ENV PNPM_HOME="/pnpm"
-ENV PNPM_STORE_DIR="/pnpm/store"
-RUN corepack enable
-
 COPY . .
 
 RUN --mount=type=cache,id=pnpm-store-node22,target=/pnpm/store,sharing=locked \
