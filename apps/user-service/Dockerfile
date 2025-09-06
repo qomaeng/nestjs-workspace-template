@@ -30,8 +30,9 @@ RUN corepack enable
 COPY . .
 
 RUN --mount=type=cache,id=pnpm-store-node22,target=/pnpm/store,sharing=locked \
-    pnpm install --offline --frozen-lockfile \
- && pnpm --filter '{packages/core}' \
+    pnpm install --offline --frozen-lockfile
+
+RUN pnpm --filter '{packages/core}' \
          --filter '{apps/user-service}' \
          build
 
