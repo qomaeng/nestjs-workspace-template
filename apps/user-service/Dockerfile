@@ -1,39 +1,54 @@
 ###################
-#     Builder
+#       Deps
 ###################
+FROM node:22-alpine AS deps
+
+WORKDIR /usr/src/workspace
 
 ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
+ENV PNPM_STORE_DIR="/pnpm/store"
 RUN corepack enable
 
-COPY . /usr/src/app
-WORKDIR /usr/src/app
+COPY pnpm-lock.yaml pnpm-workspace.yaml package.json .npmrc ./
+COPY packages/core/package.json packages/core/
+COPY apps/user-service/package.json apps/user-service/
 
-# Install dependencies
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
-  pnpm                           \
-  --filter '@template/workspace' \
-  --filter '{packages/*}'        \
-  --filter '{apps/user-service}' \
-  install --frozen-lockfile
+RUN --mount=type=cache,id=pnpm-store-node22,target=/pnpm/store,sharing=locked \
+    pnpm fetch
 
-# Build packages & application
-RUN pnpm                         \
-  --filter '{packages/*}'        \
-  --filter '{apps/user-service}' \
-  build
+###################
+#     Builder
+###################
 FROM node:22-alpine AS builder
 
-RUN pnpm --filter '{apps/user-service}' deploy --prod /app
+WORKDIR /usr/src/workspace
+
+ENV PNPM_HOME="/pnpm"
+ENV PNPM_STORE_DIR="/pnpm/store"
+RUN corepack enable
+
+COPY . .
+
+RUN --mount=type=cache,id=pnpm-store-node22,target=/pnpm/store,sharing=locked \
+    pnpm install --offline --frozen-lockfile \
+ && pnpm --filter '{packages/core}' \
+         --filter '{apps/user-service}' \
+         build
+
+RUN pnpm deploy --filter '{apps/user-service}' --prod /app
 
 ###################
 #   Application
 ###################
 FROM node:22-alpine
 
-COPY --from=builder /app /app
+USER 1000:1000
+
 WORKDIR /app
 
-EXPOSE 6001
+COPY --from=builder --chown=1000:1000 /app ./
+RUN install -m 0775 -d /app/logs
 
-CMD [ "node", "./dist/main.js" ]
+ENV NODE_ENV=production
+
+CMD ["node", "./dist/main.js"]
