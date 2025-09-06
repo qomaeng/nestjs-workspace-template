@@ -77,7 +77,7 @@ services:
   ##################
 
   postgres:
-    image: postgres:17.5-alpine3.22
+    image: postgres:17-alpine
     restart: always
     ports:
       - 127.0.0.1:5432:5432
@@ -93,7 +93,7 @@ services:
     command: -c config_file=/etc/postgresql/postgresql.conf
 
   redis:
-    image: redis:8.2.0-alpine3.22
+    image: redis:8-alpine
     restart: always
     ports:
       - 127.0.0.1:6379:6379

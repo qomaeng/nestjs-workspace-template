@@ -1,7 +1,6 @@
 ###################
 #     Builder
 ###################
-FROM node:22.18.0-alpine3.22 AS builder
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
@@ -23,13 +22,14 @@ RUN pnpm                       \
   --filter '{packages/*}'      \
   --filter '{apps/api-server}' \
   build
+FROM node:22-alpine AS builder
 
 RUN pnpm --filter '{apps/api-server}' deploy --prod /app
 
 ###################
 #   Application
 ###################
-FROM node:22.18.0-alpine3.22
+FROM node:22-alpine
 
 COPY --from=builder /app /app
 WORKDIR /app
