@@ -19,7 +19,7 @@ RUN --mount=type=cache,id=pnpm-store-node22,target=/pnpm/store,sharing=locked \
 ###################
 #     Builder
 ###################
-FROM node:22-alpine AS builder
+FROM deps AS builder
 
 WORKDIR /usr/src/workspace
 
